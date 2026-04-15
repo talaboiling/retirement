@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>You're Invited — Birthday Celebration</title>
+  <meta name="description" content="Join us for a special birthday celebration. RSVP to let us know you're coming!">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎂</text></svg>">
+</head>
+<body>
+
+  <!-- Scroll Progress Bar -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <!-- Navigation Dots -->
+  <nav class="nav-dots" id="navDots" aria-label="Section navigation">
+    <button class="nav-dot active" data-section="0" data-label="Welcome" aria-label="Go to Welcome section"></button>
+    <button class="nav-dot" data-section="1" data-label="Memories" aria-label="Go to Memories section"></button>
+    <button class="nav-dot" data-section="2" data-label="About" aria-label="Go to About section"></button>
+    <button class="nav-dot" data-section="3" data-label="Wishes" aria-label="Go to Wishes section"></button>
+    <button class="nav-dot" data-section="4" data-label="RSVP" aria-label="Go to RSVP section"></button>
+  </nav>
+
+  <!-- ============================================= -->
+  <!-- SECTION 1: HERO / WELCOME                     -->
+  <!-- ============================================= -->
+  <section class="section section--hero" id="section-hero">
+    <!-- Floating Particles -->
+    <div class="particles" id="particles"></div>
+
+    <div class="section__inner">
+      <div class="hero__badge animate-in" data-delay="1">
+        <span class="hero__badge-dot"></span>
+        You're Invited
+      </div>
+
+      <h1 class="hero__title animate-in" data-delay="2">
+        A Special <em>Birthday</em><br>Celebration
+      </h1>
+
+      <p class="hero__subtitle animate-in" data-delay="3">
+        Join us as we celebrate a remarkable milestone — a lifetime of love, laughter, and unforgettable moments.
+      </p>
+
+      <div class="hero__date animate-in" data-delay="4">
+        <span>Saturday</span>
+        <span class="hero__date-divider"></span>
+        <span>May 15, 2026</span>
+        <span class="hero__date-divider"></span>
+        <span>6:00 PM</span>
+      </div>
+    </div>
+
+    <div class="hero__scroll-hint animate-in" data-delay="5">
+      <span>Scroll to explore</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round">
+        <path d="M12 5v14M19 12l-7 7-7-7"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- ============================================= -->
+  <!-- SECTION 2: PHOTO MARQUEE                      -->
+  <!-- ============================================= -->
+  <section class="section section--photos" id="section-photos">
+    <!-- Continuous scrolling photo strips -->
+    <div class="photos__marquee-container">
+      <!-- Row 1: scrolls left -->
+      <div class="photos__marquee-row" data-direction="left">
+        <div class="photos__marquee-track">
+          <img src="images/collage.png" alt="Family gatherings" class="photos__marquee-img">
+          <img src="images/portrait.png" alt="Adventures" class="photos__marquee-img">
+          <img src="images/collage.png" alt="Celebrations" class="photos__marquee-img">
+          <img src="images/portrait.png" alt="Together" class="photos__marquee-img">
+          <!-- Duplicated for seamless loop -->
+          <img src="images/collage.png" alt="Family gatherings" class="photos__marquee-img">
+          <img src="images/portrait.png" alt="Adventures" class="photos__marquee-img">
+          <img src="images/collage.png" alt="Celebrations" class="photos__marquee-img">
+          <img src="images/portrait.png" alt="Together" class="photos__marquee-img">
+        </div>
+      </div>
+      <!-- Row 2: scrolls right -->
+      <div class="photos__marquee-row" data-direction="right">
+        <div class="photos__marquee-track photos__marquee-track--reverse">
+          <img src="images/portrait.png" alt="Adventures" class="photos__marquee-img">
+          <img src="images/collage.png" alt="Gatherings" class="photos__marquee-img">
+          <img src="images/portrait.png" alt="Celebrations" class="photos__marquee-img">
+          <img src="images/collage.png" alt="Together" class="photos__marquee-img">
+          <!-- Duplicated for seamless loop -->
+          <img src="images/portrait.png" alt="Adventures" class="photos__marquee-img">
+          <img src="images/collage.png" alt="Gatherings" class="photos__marquee-img">
+          <img src="images/portrait.png" alt="Celebrations" class="photos__marquee-img">
+          <img src="images/collage.png" alt="Together" class="photos__marquee-img">
+        </div>
+      </div>
+      <!-- Row 3: scrolls left (slower) -->
+      <div class="photos__marquee-row" data-direction="left">
+        <div class="photos__marquee-track photos__marquee-track--slow">
+          <img src="images/collage.png" alt="Moments" class="photos__marquee-img">
+          <img src="images/portrait.png" alt="Memories" class="photos__marquee-img">
+          <img src="images/collage.png" alt="Joy" class="photos__marquee-img">
+          <img src="images/portrait.png" alt="Love" class="photos__marquee-img">
+          <!-- Duplicated for seamless loop -->
+          <img src="images/collage.png" alt="Moments" class="photos__marquee-img">
+          <img src="images/portrait.png" alt="Memories" class="photos__marquee-img">
+          <img src="images/collage.png" alt="Joy" class="photos__marquee-img">
+          <img src="images/portrait.png" alt="Love" class="photos__marquee-img">
+        </div>
+      </div>
+    </div>
+
+    <!-- Overlay for text readability -->
+    <div class="photos__overlay" id="photosOverlay"></div>
+
+    <!-- Centered big text (click to toggle fade) -->
+    <div class="photos__text-wrapper" id="photosText">
+      <span class="section-label animate-in">Memories</span>
+      <h2 class="photos__title animate-in" data-delay="1">Moments That<br>Define a Life</h2>
+      <p class="photos__subtitle animate-in" data-delay="2">A lifetime of love, captured in frames</p>
+      <span class="photos__hint animate-in" data-delay="3">tap anywhere to toggle</span>
+    </div>
+  </section>
+
+  <!-- ============================================= -->
+  <!-- SECTION 3: ABOUT THE PERSON                   -->
+  <!-- ============================================= -->
+  <section class="section section--about" id="section-about">
+    <div class="section__inner">
+      <div class="about__layout">
+        <div class="about__image-wrapper animate-in from-left">
+          <div class="about__image-frame">
+            <img src="images/portrait.png" alt="Portrait of the birthday person">
+          </div>
+          <div class="about__image-border"></div>
+          <div class="about__image-accent"></div>
+        </div>
+
+        <div class="about__content">
+          <span class="section-label animate-in from-right">Celebrating</span>
+          <h2 class="about__name animate-in from-right" data-delay="1">John Anderson</h2>
+          <p class="about__role animate-in from-right" data-delay="2">A Life Well Lived</p>
+          <p class="about__bio animate-in from-right" data-delay="3">
+            Known by many as a devoted family person, a loyal friend, and someone with an infectious love of life.
+            Through the years, they've touched countless hearts with their warmth, wisdom, and unwavering generosity.
+            From building a beautiful family to inspiring everyone around them, this milestone birthday marks
+            decades of extraordinary memories and boundless joy.
+          </p>
+
+          <div class="about__stats animate-in from-right" data-delay="4">
+            <div class="stat">
+              <span class="stat__number" data-count="60">0</span>
+              <span class="stat__label">Years Young</span>
+            </div>
+            <div class="stat">
+              <span class="stat__number" data-count="35">0</span>
+              <span class="stat__label">Years of Love</span>
+            </div>
+            <div class="stat">
+              <span class="stat__number" data-count="3">0</span>
+              <span class="stat__label">Children</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================= -->
+  <!-- SECTION 4: WISHES                             -->
+  <!-- ============================================= -->
+  <section class="section section--wishes" id="section-wishes">
+    <div class="section__inner">
+      <div class="wishes__header">
+        <span class="section-label animate-in">Warm Words</span>
+        <h2 class="section-title animate-in" data-delay="1">Messages From<br>Loved Ones</h2>
+      </div>
+
+      <div class="wishes__grid">
+        <div class="wish-card animate-in" data-delay="1">
+          <div class="wish-card__icon">💛</div>
+          <h3 class="wish-card__title">Forever Grateful</h3>
+          <p class="wish-card__text">Your kindness, patience, and love have shaped who I am today. Here's to celebrating the most wonderful person I know.</p>
+          <p class="wish-card__author">— Sarah, Daughter</p>
+        </div>
+
+        <div class="wish-card animate-in" data-delay="2">
+          <div class="wish-card__icon">🌟</div>
+          <h3 class="wish-card__title">An Inspiration</h3>
+          <p class="wish-card__text">You've taught me that true strength comes from compassion and dedication. Happy Birthday to the greatest role model anyone could have.</p>
+          <p class="wish-card__author">— Michael, Son</p>
+        </div>
+
+        <div class="wish-card animate-in" data-delay="3">
+          <div class="wish-card__icon">🎶</div>
+          <h3 class="wish-card__title">Decades of Friendship</h3>
+          <p class="wish-card__text">From our college days to this incredible milestone, every moment with you has been a gift. Here's to many more adventures together.</p>
+          <p class="wish-card__author">— Robert, Best Friend</p>
+        </div>
+
+        <div class="wish-card animate-in" data-delay="4">
+          <div class="wish-card__icon">❤️</div>
+          <h3 class="wish-card__title">My Everything</h3>
+          <p class="wish-card__text">You're the love of my life, my best friend, and the most amazing partner. Thank you for every single day we've shared.</p>
+          <p class="wish-card__author">— Emma, Spouse</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================= -->
+  <!-- SECTION 5: RSVP / REGISTRATION                -->
+  <!-- ============================================= -->
+  <section class="section section--rsvp" id="section-rsvp">
+    <div class="section__inner">
+      <div class="rsvp__layout">
+        <!-- Left: Info -->
+        <div class="rsvp__info">
+          <div class="rsvp__icon-row animate-in">
+            <div class="rsvp__icon-circle">🎂</div>
+            <div class="rsvp__icon-circle">🥂</div>
+            <div class="rsvp__icon-circle">🎉</div>
+          </div>
+
+          <span class="section-label animate-in" data-delay="1">RSVP</span>
+          <h2 class="rsvp__title animate-in" data-delay="2">Join the<br>Celebration</h2>
+          <p class="rsvp__desc animate-in" data-delay="3">
+            We'd love to have you celebrate this special day with us. Please let us know if you can make it!
+          </p>
+
+          <div class="rsvp__details animate-in" data-delay="4">
+            <div class="rsvp__detail">
+              <span class="rsvp__detail-icon">📅</span>
+              <span>Saturday, May 15, 2026</span>
+            </div>
+            <div class="rsvp__detail">
+              <span class="rsvp__detail-icon">🕕</span>
+              <span>6:00 PM — Late Night</span>
+            </div>
+            <div class="rsvp__detail">
+              <span class="rsvp__detail-icon">📍</span>
+              <span>The Grand Ballroom, Downtown</span>
+            </div>
+            <div class="rsvp__detail">
+              <span class="rsvp__detail-icon">👔</span>
+              <span>Smart Casual Attire</span>
+            </div>
+          </div>
+
+          <div class="guest-count animate-in" data-delay="5">
+            <span>🎊</span>
+            <span><span class="guest-count__number" id="guestCountDisplay">0</span> guests registered</span>
+          </div>
+        </div>
+
+        <!-- Right: Form -->
+        <div class="rsvp__form-container animate-in" data-delay="2">
+          <form id="rsvpForm">
+            <div class="form__group">
+              <label class="form__label" for="guestName">Your Name</label>
+              <input class="form__input" type="text" id="guestName" name="name" placeholder="Enter your full name" required autocomplete="name">
+            </div>
+
+            <div class="form__group">
+              <label class="form__label">Will you attend?</label>
+              <div class="form__radio-group">
+                <div class="form__radio-option">
+                  <input type="radio" id="attendYes" name="attendance" value="yes" required>
+                  <label class="form__radio-label label--yes" for="attendYes">
+                    ✓ Yes, I'll be there!
+                  </label>
+                </div>
+                <div class="form__radio-option">
+                  <input type="radio" id="attendNo" name="attendance" value="no">
+                  <label class="form__radio-label label--no" for="attendNo">
+                    ✕ Sorry, I can't make it
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <button class="form__submit" type="submit" id="submitBtn">
+              Send RSVP
+            </button>
+          </form>
+
+          <!-- Success -->
+          <div class="form__success" id="formSuccess">
+            <div class="form__success-icon">✓</div>
+            <h3>Thank You!</h3>
+            <p>Your RSVP has been recorded. We look forward to celebrating together!</p>
+          </div>
+
+          <!-- Download -->
+          <button class="download-btn" id="downloadBtn" style="display:none" onclick="downloadGuestList()">
+            📥 Download Guest List (CSV)
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>Made with ❤️ for a very special birthday celebration · 2026</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

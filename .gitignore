@@ -1,0 +1,4 @@
+node_modules/
+guests.json
+.env
+.DS_Store
