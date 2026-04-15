@@ -182,7 +182,7 @@
   // 6. CSV DOWNLOAD
   // ================================================================
   window.downloadGuestList = function () {
-    window.location.href = '/api/guests/download';
+    window.location.href = '/api/download';
   };
 
   // ================================================================
