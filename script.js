@@ -1,12 +1,15 @@
 /* ===============================================
-   BIRTHDAY INVITATION — Interactive Logic
+   RETIREMENT INVITATION — Interactive Logic
    =============================================== */
 
 (function () {
   'use strict';
 
-  // ---- Storage Key ----
-  const STORAGE_KEY = 'birthday_guests';
+  // ---- Constants ----
+  const STORAGE_KEY = 'retirement_guests';
+  const LOCAL_COUNT_KEY = 'retirement_guest_count';
+  // Event date: June 20, 2026, 18:00 (local time)
+  const EVENT_DATE = new Date(2026, 5, 20, 18, 0, 0);
 
   // ---- DOM References ----
   const sections = document.querySelectorAll('.section');
@@ -143,27 +146,57 @@
   }
 
   // ================================================================
+  // 5. GUEST LIST — Client-side with API fallback
   // ================================================================
-  // 5. GUEST LIST — API Calls
-  // ================================================================
+  function getLocalGuestCount() {
+    const count = localStorage.getItem(LOCAL_COUNT_KEY);
+    return count ? parseInt(count) : 0;
+  }
+
+  function incrementLocalGuestCount() {
+    const current = getLocalGuestCount();
+    const newCount = current + 1;
+    localStorage.setItem(LOCAL_COUNT_KEY, newCount.toString());
+    return newCount;
+  }
+
+  function updateGuestCountDisplay(count) {
+    if (guestCountDisplay) {
+      guestCountDisplay.textContent = count;
+    }
+  }
+
   async function updateGuestCount() {
+    // First show local count immediately
+    const localCount = getLocalGuestCount();
+    updateGuestCountDisplay(localCount);
+
+    // Then try to fetch from server
     try {
       const response = await fetch('/api/guests');
-      const guests = await response.json();
-      const attending = guests.filter(g => g.attending === 'yes').length;
-      if (guestCountDisplay) {
-        guestCountDisplay.textContent = attending;
-      }
-      // Show download button if there are guests
-      if (downloadBtn) {
-        downloadBtn.style.display = guests.length > 0 ? 'inline-flex' : 'none';
+      if (response.ok) {
+        const guests = await response.json();
+        const attending = guests.filter(g => g.attending === 'yes').length;
+        // Use server count if it's higher
+        const displayCount = Math.max(attending, localCount);
+        updateGuestCountDisplay(displayCount);
+        // Sync local storage
+        localStorage.setItem(LOCAL_COUNT_KEY, displayCount.toString());
       }
     } catch (err) {
-      console.error('Error fetching guests:', err);
+      // Server unavailable, keep using local count
+      console.log('Using local guest count:', localCount);
     }
   }
 
   async function saveGuest(name, attending) {
+    // Always increment local count if attending
+    if (attending === 'yes') {
+      const newCount = incrementLocalGuestCount();
+      updateGuestCountDisplay(newCount);
+    }
+
+    // Try to save to server
     try {
       await fetch('/api/rsvp', {
         method: 'POST',
@@ -172,9 +205,8 @@
         },
         body: JSON.stringify({ name, attending })
       });
-      updateGuestCount();
     } catch (err) {
-      console.error('Error saving guest:', err);
+      console.log('Server unavailable, guest saved locally');
     }
   }
 
@@ -202,7 +234,7 @@
       const submitBtn = document.getElementById('submitBtn');
       if (submitBtn) {
         submitBtn.disabled = true;
-        submitBtn.textContent = 'Sending...';
+        submitBtn.textContent = 'Жіберілуде...';
       }
 
       // Save
@@ -258,10 +290,115 @@
     if (!photosSection) return;
 
     photosSection.addEventListener('click', (e) => {
-      // Don't toggle if user is clicking on a link or button inside
       if (e.target.closest('a, button')) return;
       photosSection.classList.toggle('text-hidden');
     });
+  }
+
+  // ================================================================
+  // 10. VINYL DISC MUSIC PLAYER
+  // ================================================================
+  function setupVinylPlayer() {
+    const audio = document.getElementById('bgMusic');
+    const vinylPlayer = document.getElementById('vinylPlayer');
+    const vinylDisc = document.getElementById('vinylDisc');
+    const vinylStatus = document.getElementById('vinylStatus');
+
+    if (!audio || !vinylPlayer) return;
+
+    let isPlaying = false;
+
+    function toggleMusic() {
+      if (isPlaying) {
+        audio.pause();
+        vinylDisc.classList.remove('spinning');
+        vinylDisc.classList.add('paused');
+        vinylStatus.textContent = '▶';
+        vinylPlayer.classList.remove('playing');
+      } else {
+        audio.play().then(() => {
+          vinylDisc.classList.add('spinning');
+          vinylDisc.classList.remove('paused');
+          vinylStatus.textContent = '❚❚';
+          vinylPlayer.classList.add('playing');
+        }).catch(err => {
+          console.log('Autoplay blocked, user interaction needed:', err);
+        });
+      }
+      isPlaying = !isPlaying;
+    }
+
+    vinylPlayer.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleMusic();
+    });
+
+    // Auto-play on first user interaction (click anywhere)
+    function autoPlayOnInteraction() {
+      if (!isPlaying) {
+        audio.play().then(() => {
+          isPlaying = true;
+          vinylDisc.classList.add('spinning');
+          vinylDisc.classList.remove('paused');
+          vinylStatus.textContent = '❚❚';
+          vinylPlayer.classList.add('playing');
+        }).catch(() => {});
+      }
+      document.removeEventListener('click', autoPlayOnInteraction);
+      document.removeEventListener('touchstart', autoPlayOnInteraction);
+      document.removeEventListener('scroll', autoPlayOnInteraction);
+    }
+
+    document.addEventListener('click', autoPlayOnInteraction, { once: false });
+    document.addEventListener('touchstart', autoPlayOnInteraction, { once: false });
+    document.addEventListener('scroll', autoPlayOnInteraction, { once: false });
+
+    // Handle audio ending (though it loops, just in case)
+    audio.addEventListener('ended', () => {
+      isPlaying = false;
+      vinylDisc.classList.remove('spinning');
+      vinylStatus.textContent = '▶';
+      vinylPlayer.classList.remove('playing');
+    });
+  }
+
+  // ================================================================
+  // 11. COUNTDOWN TIMER
+  // ================================================================
+  function setupCountdown() {
+    const daysEl = document.getElementById('countDays');
+    const hoursEl = document.getElementById('countHours');
+    const minutesEl = document.getElementById('countMinutes');
+    const secondsEl = document.getElementById('countSeconds');
+
+    if (!daysEl || !hoursEl || !minutesEl || !secondsEl) return;
+
+    function updateCountdown() {
+      const now = new Date();
+      const diff = EVENT_DATE - now;
+
+      if (diff <= 0) {
+        daysEl.textContent = '0';
+        hoursEl.textContent = '0';
+        minutesEl.textContent = '0';
+        secondsEl.textContent = '0';
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+      daysEl.textContent = days;
+      hoursEl.textContent = hours.toString().padStart(2, '0');
+      minutesEl.textContent = minutes.toString().padStart(2, '0');
+      secondsEl.textContent = seconds.toString().padStart(2, '0');
+    }
+
+    // Update immediately, then every second
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
   }
 
   // ================================================================
@@ -275,6 +412,8 @@
     setupForm();
     setupKeyboardNav();
     setupPhotoToggle();
+    setupVinylPlayer();
+    setupCountdown();
     updateGuestCount();
   }
 

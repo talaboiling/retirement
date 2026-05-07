@@ -1,25 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="kk">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>You're Invited — Birthday Celebration</title>
-  <meta name="description" content="Join us for a special birthday celebration. RSVP to let us know you're coming!">
+  <title>Сіз шақырылдыңыз — Зейнеткерлікке шығу мерекесі</title>
+  <meta name="description" content="Зейнеткерлікке шығу мерекесіне қосылыңыз. Қатысатыныңызды хабарлаңыз!">
   <link rel="stylesheet" href="style.css">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎂</text></svg>">
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎉</text></svg>">
 </head>
+
 <body>
+
+  <!-- Background Music -->
+  <audio id="bgMusic" loop preload="auto">
+    <source src="dad.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Vinyl Disc Music Player -->
+  <div class="vinyl-player" id="vinylPlayer" title="Музыканы ойнату / тоқтату">
+    <div class="vinyl-disc" id="vinylDisc">
+      <div class="vinyl-groove vinyl-groove--1"></div>
+      <div class="vinyl-groove vinyl-groove--2"></div>
+      <div class="vinyl-groove vinyl-groove--3"></div>
+      <div class="vinyl-center">
+        <div class="vinyl-center-dot"></div>
+      </div>
+    </div>
+    <div class="vinyl-status" id="vinylStatus">▶</div>
+  </div>
 
   <!-- Scroll Progress Bar -->
   <div class="scroll-progress" id="scrollProgress"></div>
 
   <!-- Navigation Dots -->
-  <nav class="nav-dots" id="navDots" aria-label="Section navigation">
-    <button class="nav-dot active" data-section="0" data-label="Welcome" aria-label="Go to Welcome section"></button>
-    <button class="nav-dot" data-section="1" data-label="Memories" aria-label="Go to Memories section"></button>
-    <button class="nav-dot" data-section="2" data-label="About" aria-label="Go to About section"></button>
-    <button class="nav-dot" data-section="3" data-label="Wishes" aria-label="Go to Wishes section"></button>
-    <button class="nav-dot" data-section="4" data-label="RSVP" aria-label="Go to RSVP section"></button>
+  <nav class="nav-dots" id="navDots" aria-label="Бөлімдер навигациясы">
+    <button class="nav-dot active" data-section="0" data-label="Басты бет" aria-label="Басты бетке өту"></button>
+    <button class="nav-dot" data-section="1" data-label="Естеліктер" aria-label="Естеліктер бөліміне өту"></button>
+    <button class="nav-dot" data-section="2" data-label="Жайлы" aria-label="Жайлы бөліміне өту"></button>
+    <button class="nav-dot" data-section="3" data-label="Мекенжай" aria-label="Мекенжай бөліміне өту"></button>
+    <button class="nav-dot" data-section="4" data-label="Кері санақ" aria-label="Кері санақ бөліміне өту"></button>
+    <button class="nav-dot" data-section="5" data-label="Тіркелу" aria-label="Тіркелу бөліміне өту"></button>
   </nav>
 
   <!-- ============================================= -->
@@ -32,30 +54,30 @@
     <div class="section__inner">
       <div class="hero__badge animate-in" data-delay="1">
         <span class="hero__badge-dot"></span>
-        You're Invited
+        Сіз шақырылдыңыз
       </div>
 
       <h1 class="hero__title animate-in" data-delay="2">
-        A Special <em>Birthday</em><br>Celebration
+        <em>Зейнет тойына</em><br>шақыру
       </h1>
 
       <p class="hero__subtitle animate-in" data-delay="3">
-        Join us as we celebrate a remarkable milestone — a lifetime of love, laughter, and unforgettable moments.
+        Сізді ерекше адамның еңбек жолын құрметтеуге және оның жаңа өмір кезеңін бірге тойлауға шақырамыз.
       </p>
 
       <div class="hero__date animate-in" data-delay="4">
-        <span>Saturday</span>
+        <span>Сенбі</span>
         <span class="hero__date-divider"></span>
-        <span>May 15, 2026</span>
+        <span>20 маусым, 2026</span>
         <span class="hero__date-divider"></span>
-        <span>6:00 PM</span>
+        <span>18:00</span>
       </div>
     </div>
 
     <div class="hero__scroll-hint animate-in" data-delay="5">
-      <span>Scroll to explore</span>
+      <span>Төменге айналдырыңыз</span>
       <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round">
-        <path d="M12 5v14M19 12l-7 7-7-7"/>
+        <path d="M12 5v14M19 12l-7 7-7-7" />
       </svg>
     </div>
   </section>
@@ -69,43 +91,88 @@
       <!-- Row 1: scrolls left -->
       <div class="photos__marquee-row" data-direction="left">
         <div class="photos__marquee-track">
-          <img src="images/collage.png" alt="Family gatherings" class="photos__marquee-img">
-          <img src="images/portrait.png" alt="Adventures" class="photos__marquee-img">
-          <img src="images/collage.png" alt="Celebrations" class="photos__marquee-img">
-          <img src="images/portrait.png" alt="Together" class="photos__marquee-img">
+          <img src="images/photo_2026-05-07_19-32-32.jpg" alt="Отбасылық сурет" class="photos__marquee-img">
+          <img src="images/photo_2026-05-07_19-32-43.jpg" alt="Отбасылық сурет" class="photos__marquee-img">
+          <img src="images/photo_2026-05-07_19-32-48.jpg" alt="Отбасылық сурет" class="photos__marquee-img">
+          <img src="images/photo_2026-05-07_19-32-51.jpg" alt="Отбасылық сурет" class="photos__marquee-img">
+          <img src="images/photo_2026-05-07_19-32-59.jpg" alt="Отбасылық сурет" class="photos__marquee-img">
+          <img src="images/photo_2026-05-07_19-33-01.jpg" alt="Отбасылық сурет" class="photos__marquee-img">
+
+          <img src="images/IMG_1265.JPG" alt="Отбасылық сурет" class="photos__marquee-img">
+
+
           <!-- Duplicated for seamless loop -->
-          <img src="images/collage.png" alt="Family gatherings" class="photos__marquee-img">
-          <img src="images/portrait.png" alt="Adventures" class="photos__marquee-img">
-          <img src="images/collage.png" alt="Celebrations" class="photos__marquee-img">
-          <img src="images/portrait.png" alt="Together" class="photos__marquee-img">
+          <img src="images/photo_2026-05-07_19-32-32.jpg" alt="Отбасылық сурет" class="photos__marquee-img">
+          <img src="images/photo_2026-05-07_19-32-43.jpg" alt="Отбасылық сурет" class="photos__marquee-img">
+          <img src="images/photo_2026-05-07_19-32-48.jpg" alt="Отбасылық сурет" class="photos__marquee-img">
+          <img src="images/photo_2026-05-07_19-32-51.jpg" alt="Отбасылық сурет" class="photos__marquee-img">
+          <img src="images/photo_2026-05-07_19-32-59.jpg" alt="Отбасылық сурет" class="photos__marquee-img">
+          <img src="images/photo_2026-05-07_19-33-01.jpg" alt="Отбасылық сурет" class="photos__marquee-img">
+
+          <img src="images/IMG_1265.JPG" alt="Отбасылық сурет" class="photos__marquee-img">
         </div>
       </div>
       <!-- Row 2: scrolls right -->
       <div class="photos__marquee-row" data-direction="right">
         <div class="photos__marquee-track photos__marquee-track--reverse">
-          <img src="images/portrait.png" alt="Adventures" class="photos__marquee-img">
-          <img src="images/collage.png" alt="Gatherings" class="photos__marquee-img">
-          <img src="images/portrait.png" alt="Celebrations" class="photos__marquee-img">
-          <img src="images/collage.png" alt="Together" class="photos__marquee-img">
+          <img src="images/photo_2026-05-07_19-33-03.jpg" alt="Естелік сурет" class="photos__marquee-img">
+          <img src="images/photo_2026-05-07_19-33-06.jpg" alt="Естелік сурет" class="photos__marquee-img">
+          <img src="images/photo_2026-05-07_19-33-07.jpg" alt="Естелік сурет" class="photos__marquee-img">
+          <img src="images/photo_2026-05-07_19-33-10.jpg" alt="Естелік сурет" class="photos__marquee-img">
+          <img src="images/photo_2026-05-07_19-33-12.jpg" alt="Естелік сурет" class="photos__marquee-img">
+          <img src="images/photo_2026-05-07_19-33-14.jpg" alt="Естелік сурет" class="photos__marquee-img">
+          <img src="images/IMG_1511.JPG" alt="Отбасылық сурет" class="photos__marquee-img">
+          <img src="images/IMG_1529.JPG" alt="Отбасылық сурет" class="photos__marquee-img">
+          <img src="images/IMG_1775.JPG" alt="Отбасылық сурет" class="photos__marquee-img">
+          <img src="images/IMG_2355.JPG" alt="Отбасылық сурет" class="photos__marquee-img">
+          <img src="images/IMG_3331.JPG" alt="Отбасылық сурет" class="photos__marquee-img">
+          <img src="images/IMG_3628.JPG" alt="Отбасылық сурет" class="photos__marquee-img">
+
+          <img src="images/IMG_4574.JPG" alt="Отбасылық сурет" class="photos__marquee-img">
+
           <!-- Duplicated for seamless loop -->
-          <img src="images/portrait.png" alt="Adventures" class="photos__marquee-img">
-          <img src="images/collage.png" alt="Gatherings" class="photos__marquee-img">
-          <img src="images/portrait.png" alt="Celebrations" class="photos__marquee-img">
-          <img src="images/collage.png" alt="Together" class="photos__marquee-img">
+          <img src="images/photo_2026-05-07_19-33-03.jpg" alt="Естелік сурет" class="photos__marquee-img">
+          <img src="images/photo_2026-05-07_19-33-06.jpg" alt="Естелік сурет" class="photos__marquee-img">
+          <img src="images/photo_2026-05-07_19-33-07.jpg" alt="Естелік сурет" class="photos__marquee-img">
+          <img src="images/photo_2026-05-07_19-33-10.jpg" alt="Естелік сурет" class="photos__marquee-img">
+          <img src="images/photo_2026-05-07_19-33-12.jpg" alt="Естелік сурет" class="photos__marquee-img">
+          <img src="images/photo_2026-05-07_19-33-14.jpg" alt="Естелік сурет" class="photos__marquee-img">
+          <img src="images/IMG_1511.JPG" alt="Отбасылық сурет" class="photos__marquee-img">
+          <img src="images/IMG_1529.JPG" alt="Отбасылық сурет" class="photos__marquee-img">
+          <img src="images/IMG_1775.JPG" alt="Отбасылық сурет" class="photos__marquee-img">
+          <img src="images/IMG_2355.JPG" alt="Отбасылық сурет" class="photos__marquee-img">
+          <img src="images/IMG_3331.JPG" alt="Отбасылық сурет" class="photos__marquee-img">
+          <img src="images/IMG_3628.JPG" alt="Отбасылық сурет" class="photos__marquee-img">
+
+          <img src="images/IMG_4574.JPG" alt="Отбасылық сурет" class="photos__marquee-img">
         </div>
       </div>
       <!-- Row 3: scrolls left (slower) -->
       <div class="photos__marquee-row" data-direction="left">
         <div class="photos__marquee-track photos__marquee-track--slow">
-          <img src="images/collage.png" alt="Moments" class="photos__marquee-img">
-          <img src="images/portrait.png" alt="Memories" class="photos__marquee-img">
-          <img src="images/collage.png" alt="Joy" class="photos__marquee-img">
-          <img src="images/portrait.png" alt="Love" class="photos__marquee-img">
+          <img src="images/photo_2026-05-07_19-33-16.jpg" alt="Жұмыс естелігі" class="photos__marquee-img">
+          <img src="images/photo_2026-05-07_19-33-18.jpg" alt="Жұмыс естелігі" class="photos__marquee-img">
+          <img src="images/photo_2026-05-07_19-33-22.jpg" alt="Жұмыс естелігі" class="photos__marquee-img">
+          <img src="images/photo_2026-05-07_19-33-25.jpg" alt="Жұмыс естелігі" class="photos__marquee-img">
+          <img src="images/photo_2026-05-07_19-33-31.jpg" alt="Жұмыс естелігі" class="photos__marquee-img">
+          <img src="images/photo_2026-05-07_19-38-40.jpg" alt="Жұмыс естелігі" class="photos__marquee-img">
+          <img src="images/IMG_4616.JPG" alt="Отбасылық сурет" class="photos__marquee-img">
+
+          <img src="images/IMG_3501.jpg" alt="Отбасылық сурет" class="photos__marquee-img">
+          <img src="images/IMG_9298.JPG" alt="Отбасылық сурет" class="photos__marquee-img">
+          <img src="images/IMG_9856.JPG" alt="Отбасылық сурет" class="photos__marquee-img">
           <!-- Duplicated for seamless loop -->
-          <img src="images/collage.png" alt="Moments" class="photos__marquee-img">
-          <img src="images/portrait.png" alt="Memories" class="photos__marquee-img">
-          <img src="images/collage.png" alt="Joy" class="photos__marquee-img">
-          <img src="images/portrait.png" alt="Love" class="photos__marquee-img">
+          <img src="images/photo_2026-05-07_19-33-16.jpg" alt="Жұмыс естелігі" class="photos__marquee-img">
+          <img src="images/photo_2026-05-07_19-33-18.jpg" alt="Жұмыс естелігі" class="photos__marquee-img">
+          <img src="images/photo_2026-05-07_19-33-22.jpg" alt="Жұмыс естелігі" class="photos__marquee-img">
+          <img src="images/photo_2026-05-07_19-33-25.jpg" alt="Жұмыс естелігі" class="photos__marquee-img">
+          <img src="images/photo_2026-05-07_19-33-31.jpg" alt="Жұмыс естелігі" class="photos__marquee-img">
+          <img src="images/photo_2026-05-07_19-38-40.jpg" alt="Жұмыс естелігі" class="photos__marquee-img">
+          <img src="images/IMG_4616.JPG" alt="Отбасылық сурет" class="photos__marquee-img">
+
+          <img src="images/IMG_3501.jpg" alt="Отбасылық сурет" class="photos__marquee-img">
+          <img src="images/IMG_9298.JPG" alt="Отбасылық сурет" class="photos__marquee-img">
+          <img src="images/IMG_9856.JPG" alt="Отбасылық сурет" class="photos__marquee-img">
         </div>
       </div>
     </div>
@@ -115,10 +182,10 @@
 
     <!-- Centered big text (click to toggle fade) -->
     <div class="photos__text-wrapper" id="photosText">
-      <span class="section-label animate-in">Memories</span>
-      <h2 class="photos__title animate-in" data-delay="1">Moments That<br>Define a Life</h2>
-      <p class="photos__subtitle animate-in" data-delay="2">A lifetime of love, captured in frames</p>
-      <span class="photos__hint animate-in" data-delay="3">tap anywhere to toggle</span>
+      <span class="section-label animate-in">Естеліктер</span>
+      <h2 class="photos__title animate-in" data-delay="1">Өмір Жолының<br>Сәттері</h2>
+      <p class="photos__subtitle animate-in" data-delay="2">Ғұмырдың асыл сәттерін суреттен көре отырыңыз</p>
+      <span class="photos__hint animate-in" data-delay="3">суреттерді көру үшін басыңыз</span>
     </div>
   </section>
 
@@ -130,35 +197,35 @@
       <div class="about__layout">
         <div class="about__image-wrapper animate-in from-left">
           <div class="about__image-frame">
-            <img src="images/portrait.png" alt="Portrait of the birthday person">
+            <img src="images/portrait.jpg" alt="Зейнеткер портреті">
           </div>
           <div class="about__image-border"></div>
           <div class="about__image-accent"></div>
         </div>
 
         <div class="about__content">
-          <span class="section-label animate-in from-right">Celebrating</span>
-          <h2 class="about__name animate-in from-right" data-delay="1">John Anderson</h2>
-          <p class="about__role animate-in from-right" data-delay="2">A Life Well Lived</p>
+          <span class="section-label animate-in from-right">Құттықтаймыз</span>
+          <h2 class="about__name animate-in from-right" data-delay="1">Құрметті Әке, Ата, Ұстаз</h2>
+          <p class="about__role animate-in from-right" data-delay="2">Мол Еңбек Жолы</p>
           <p class="about__bio animate-in from-right" data-delay="3">
-            Known by many as a devoted family person, a loyal friend, and someone with an infectious love of life.
-            Through the years, they've touched countless hearts with their warmth, wisdom, and unwavering generosity.
-            From building a beautiful family to inspiring everyone around them, this milestone birthday marks
-            decades of extraordinary memories and boundless joy.
+            Көптеген жылдар бойы адал еңбек етіп, өз ісіне шын жүректен берілген жан.
+            Жыл сайын жүздеген шәкірттер мен әріптестердің жүрегіне жылулық сыйлап,
+            білім мен тәжірибесімен бөлісіп келді. Бұл мерейтой - ұзақ жылғы
+            табысты еңбек жолының жемісін тойлау, жаңа өмір кезеңіне қадам басу мерекесі.
           </p>
 
           <div class="about__stats animate-in from-right" data-delay="4">
             <div class="stat">
-              <span class="stat__number" data-count="60">0</span>
-              <span class="stat__label">Years Young</span>
+              <span class="stat__number" data-count="40">0</span>
+              <span class="stat__label">Жыл Еңбек</span>
             </div>
             <div class="stat">
-              <span class="stat__number" data-count="35">0</span>
-              <span class="stat__label">Years of Love</span>
+              <span class="stat__number" data-count="1000">0</span>
+              <span class="stat__label">Астам шәкірттер</span>
             </div>
             <div class="stat">
               <span class="stat__number" data-count="3">0</span>
-              <span class="stat__label">Children</span>
+              <span class="stat__label">Бала</span>
             </div>
           </div>
         </div>
@@ -167,44 +234,69 @@
   </section>
 
   <!-- ============================================= -->
-  <!-- SECTION 4: WISHES                             -->
+  <!-- SECTION: VENUE / LOCATION                     -->
   <!-- ============================================= -->
-  <section class="section section--wishes" id="section-wishes">
+  <section class="section section--venue" id="section-venue">
     <div class="section__inner">
-      <div class="wishes__header">
-        <span class="section-label animate-in">Warm Words</span>
-        <h2 class="section-title animate-in" data-delay="1">Messages From<br>Loved Ones</h2>
+      <div class="venue__header">
+        <span class="section-label animate-in">Мекенжай</span>
+        <h2 class="venue__name animate-in" data-delay="1">Villa Tau</h2>
+        <p class="venue__address animate-in" data-delay="2">Өскемен қ., Тойхана</p>
       </div>
 
-      <div class="wishes__grid">
-        <div class="wish-card animate-in" data-delay="1">
-          <div class="wish-card__icon">💛</div>
-          <h3 class="wish-card__title">Forever Grateful</h3>
-          <p class="wish-card__text">Your kindness, patience, and love have shaped who I am today. Here's to celebrating the most wonderful person I know.</p>
-          <p class="wish-card__author">— Sarah, Daughter</p>
-        </div>
+      <div class="venue__map-container animate-in" data-delay="3">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2500!2d82.633421!3d49.876776!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDnCsDUyJzM2LjQiTiA4MsKwMzgnMDAuMyJF!5e0!3m2!1skk!2skz!4v1700000000000"
+          allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
 
-        <div class="wish-card animate-in" data-delay="2">
-          <div class="wish-card__icon">🌟</div>
-          <h3 class="wish-card__title">An Inspiration</h3>
-          <p class="wish-card__text">You've taught me that true strength comes from compassion and dedication. Happy Birthday to the greatest role model anyone could have.</p>
-          <p class="wish-card__author">— Michael, Son</p>
-        </div>
+      <div class="venue__links animate-in" data-delay="4">
+        <a href="https://2gis.kz/ust-kamenogorsk/firm/70000001088457485/82.633421%2C49.876776?m=82.635041%2C49.878843%2F16.42"
+          target="_blank" rel="noopener noreferrer" class="venue__link venue__link--2gis">
+          📍 2GIS-те ашу
+        </a>
+        <a href="https://www.google.com/maps/search/?api=1&query=49.876776,82.633421" target="_blank"
+          rel="noopener noreferrer" class="venue__link venue__link--maps">
+          🗺️ Google Maps
+        </a>
+      </div>
+    </div>
+  </section>
 
-        <div class="wish-card animate-in" data-delay="3">
-          <div class="wish-card__icon">🎶</div>
-          <h3 class="wish-card__title">Decades of Friendship</h3>
-          <p class="wish-card__text">From our college days to this incredible milestone, every moment with you has been a gift. Here's to many more adventures together.</p>
-          <p class="wish-card__author">— Robert, Best Friend</p>
-        </div>
+  <!-- ============================================= -->
+  <!-- SECTION: COUNTDOWN TIMER                      -->
+  <!-- ============================================= -->
+  <section class="section section--countdown" id="section-countdown">
+    <div class="section__inner">
+      <div class="countdown__header">
+        <span class="section-label animate-in">Кері Санақ</span>
+        <h2 class="section-title animate-in" data-delay="1">Мерекеге<br>Қанша Қалды?</h2>
+      </div>
 
-        <div class="wish-card animate-in" data-delay="4">
-          <div class="wish-card__icon">❤️</div>
-          <h3 class="wish-card__title">My Everything</h3>
-          <p class="wish-card__text">You're the love of my life, my best friend, and the most amazing partner. Thank you for every single day we've shared.</p>
-          <p class="wish-card__author">— Emma, Spouse</p>
+      <div class="countdown__grid animate-in" data-delay="2">
+        <div class="countdown__item">
+          <span class="countdown__number" id="countDays">00</span>
+          <span class="countdown__label">Күн</span>
+        </div>
+        <div class="countdown__divider"></div>
+        <div class="countdown__item">
+          <span class="countdown__number" id="countHours">00</span>
+          <span class="countdown__label">Сағат</span>
+        </div>
+        <div class="countdown__divider"></div>
+        <div class="countdown__item">
+          <span class="countdown__number" id="countMinutes">00</span>
+          <span class="countdown__label">Минут</span>
+        </div>
+        <div class="countdown__divider"></div>
+        <div class="countdown__item">
+          <span class="countdown__number" id="countSeconds">00</span>
+          <span class="countdown__label">Секунд</span>
         </div>
       </div>
+
+      <p class="countdown__message animate-in" data-delay="3">Сізді асыға күтеміз!</p>
     </div>
   </section>
 
@@ -217,39 +309,39 @@
         <!-- Left: Info -->
         <div class="rsvp__info">
           <div class="rsvp__icon-row animate-in">
-            <div class="rsvp__icon-circle">🎂</div>
-            <div class="rsvp__icon-circle">🥂</div>
             <div class="rsvp__icon-circle">🎉</div>
+            <div class="rsvp__icon-circle">🥂</div>
+            <div class="rsvp__icon-circle">🌟</div>
           </div>
 
-          <span class="section-label animate-in" data-delay="1">RSVP</span>
-          <h2 class="rsvp__title animate-in" data-delay="2">Join the<br>Celebration</h2>
+          <span class="section-label animate-in" data-delay="1">Тіркелу</span>
+          <h2 class="rsvp__title animate-in" data-delay="2">Мерекеге<br>Қосылыңыз</h2>
           <p class="rsvp__desc animate-in" data-delay="3">
-            We'd love to have you celebrate this special day with us. Please let us know if you can make it!
+            Сізді осы ерекше күнді бірге тойлауға шақырамыз. Қатысатыныңызды хабарлаңыз!
           </p>
 
           <div class="rsvp__details animate-in" data-delay="4">
             <div class="rsvp__detail">
               <span class="rsvp__detail-icon">📅</span>
-              <span>Saturday, May 15, 2026</span>
+              <span>Сенбі, 20 маусым, 2026</span>
             </div>
             <div class="rsvp__detail">
               <span class="rsvp__detail-icon">🕕</span>
-              <span>6:00 PM — Late Night</span>
+              <span>18:00 — Кеш батқанша</span>
             </div>
             <div class="rsvp__detail">
               <span class="rsvp__detail-icon">📍</span>
-              <span>The Grand Ballroom, Downtown</span>
+              <span>Мерекелік мейрамхана</span>
             </div>
             <div class="rsvp__detail">
               <span class="rsvp__detail-icon">👔</span>
-              <span>Smart Casual Attire</span>
+              <span>Классикалық стиль</span>
             </div>
           </div>
 
           <div class="guest-count animate-in" data-delay="5">
             <span>🎊</span>
-            <span><span class="guest-count__number" id="guestCountDisplay">0</span> guests registered</span>
+            <span><span class="guest-count__number" id="guestCountDisplay">0</span> қонақ тіркелді</span>
           </div>
         </div>
 
@@ -257,43 +349,44 @@
         <div class="rsvp__form-container animate-in" data-delay="2">
           <form id="rsvpForm">
             <div class="form__group">
-              <label class="form__label" for="guestName">Your Name</label>
-              <input class="form__input" type="text" id="guestName" name="name" placeholder="Enter your full name" required autocomplete="name">
+              <label class="form__label" for="guestName">Аты-жөніңіз</label>
+              <input class="form__input" type="text" id="guestName" name="name" placeholder="Толық атыңызды жазыңыз"
+                required autocomplete="name">
             </div>
 
             <div class="form__group">
-              <label class="form__label">Will you attend?</label>
+              <label class="form__label">Қатысасыз ба?</label>
               <div class="form__radio-group">
                 <div class="form__radio-option">
                   <input type="radio" id="attendYes" name="attendance" value="yes" required>
                   <label class="form__radio-label label--yes" for="attendYes">
-                    ✓ Yes, I'll be there!
+                    ✓ Иә, барамын!
                   </label>
                 </div>
                 <div class="form__radio-option">
                   <input type="radio" id="attendNo" name="attendance" value="no">
                   <label class="form__radio-label label--no" for="attendNo">
-                    ✕ Sorry, I can't make it
+                    ✕ Қатыса алмаймын
                   </label>
                 </div>
               </div>
             </div>
 
             <button class="form__submit" type="submit" id="submitBtn">
-              Send RSVP
+              Жауап жіберу
             </button>
           </form>
 
           <!-- Success -->
           <div class="form__success" id="formSuccess">
             <div class="form__success-icon">✓</div>
-            <h3>Thank You!</h3>
-            <p>Your RSVP has been recorded. We look forward to celebrating together!</p>
+            <h3>Рахмет!</h3>
+            <p>Жауабыңыз қабылданды. Мерекеде кездескенше!</p>
           </div>
 
           <!-- Download -->
-          <button class="download-btn" id="downloadBtn" style="display:none" onclick="downloadGuestList()">
-            📥 Download Guest List (CSV)
+          <button class="download-btn" id="downloadBtn" onclick="downloadGuestList()">
+            📥 Қонақтар тізімін жүктеу (CSV)
           </button>
         </div>
       </div>
@@ -302,9 +395,10 @@
 
   <!-- Footer -->
   <footer class="footer">
-    <p>Made with ❤️ for a very special birthday celebration · 2026</p>
+    <p>Шын ❤️ жасалды — Зейнеткерлікке шығу мерекесі · 2026</p>
   </footer>
 
   <script src="script.js"></script>
 </body>
+
 </html>
